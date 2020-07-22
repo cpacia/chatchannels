@@ -62,7 +62,7 @@ if err != nil {
 sub := channel.Subscribe()
 for {
 	select {
-	case message := <- sub
+	case message := <- sub.Out
 	    fmt.Println(message)
 	}
 }
