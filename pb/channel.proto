@@ -1,0 +1,36 @@
+syntax = "proto3";
+option go_package = "pb";
+
+import "google/protobuf/timestamp.proto";
+
+message ChannelMessage {
+    bytes cid                           = 1;
+    string message                      = 2;
+    string topic                        = 3;
+    string peerID                       = 4;
+    google.protobuf.Timestamp timestamp = 5;
+    bytes signature                     = 6;
+}
+
+message NetworkMessage {
+    enum Type {
+        BOOTSTRAP_REQUEST  = 0;
+        BOOTSTRAP_RESPONSE = 1;
+    }
+
+    message BootstrapRequest {
+        string topic = 1;
+    }
+
+    message BootstrapResponse {
+        string topic        = 1;
+        repeated bytes cids = 2;
+    }
+
+    Type type = 1; // Type of the message
+
+    oneof payload {
+        BootstrapRequest request   = 2;
+        BootstrapResponse response = 3;
+    }
+}
