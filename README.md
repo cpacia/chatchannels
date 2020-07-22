@@ -28,7 +28,7 @@ m0 <- m1 <- m2        m4 <- m5
                  m3b 
 ```
 
-Loading the message history of the channel is just a matter of traversing the DAG backwards from the head of the channel.
+Since each message is an IPFS object loading the message history of the channel is just a matter of traversing the DAG backwards from the head of the channel.
 
 ## Usage
 
